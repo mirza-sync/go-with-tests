@@ -4,6 +4,10 @@ import "fmt"
 
 type Bitcoin int
 
+type Stringer interface {
+	String() string
+}
+
 type Wallet struct {
 	balance Bitcoin
 }
@@ -15,4 +19,8 @@ func (w *Wallet) Deposit(amount Bitcoin) {
 func (w *Wallet) Balance() Bitcoin {
 	fmt.Printf("address of balance in Deposit is %p \n", &w.balance)
 	return w.balance
+}
+
+func (b Bitcoin) String() string {
+	return fmt.Sprintf("%d BTC", b)
 }
